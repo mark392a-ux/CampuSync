@@ -1,17 +1,24 @@
-# 🎓 CampuSync — Smart Campus Leave Management System
+# 🎓 CampuSync
+
+### Smart Campus Leave Management System
 
 <p align="center">
 
-Modern campus leave management platform built using **Next.js, Supabase, TypeScript, and Tailwind CSS**
+Modern role-based campus leave management platform built using Next.js, Supabase, TypeScript, and Tailwind CSS.
 
 </p>
 
 <p align="center">
 
-![NextJS](https://img.shields.io/badge/Next.js-16-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-blue)
-![Supabase](https://img.shields.io/badge/Supabase-green)
-![License](https://img.shields.io/badge/license-MIT-purple)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-Blue?style=for-the-badge)
+
+![Supabase](https://img.shields.io/badge/Supabase-Backend-green?style=for-the-badge)
+
+![Tailwind](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge)
+
+![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
 
 </p>
 
@@ -19,11 +26,89 @@ Modern campus leave management platform built using **Next.js, Supabase, TypeScr
 
 # 🌐 Live Demo
 
-**Deployed App**
+### Try CampuSync Here
 
-```text
-https://campu-sync.vercel.app/
-```
+## https://campu-sync.vercel.app/
+
+---
+
+# 📚 Table of Contents
+
+* Overview
+* Features
+* Screenshots
+* Tech Stack
+* Architecture
+* Database Structure
+* Installation
+* Environment Variables
+* Running Locally
+* Deployment
+* Project Structure
+* License
+
+---
+
+# 🚀 Overview
+
+CampuSync is a modern leave management platform designed for educational institutions.
+
+It provides:
+
+✅ Student leave applications
+
+✅ Faculty approval workflow
+
+✅ Admin management system
+
+✅ Real-time status tracking
+
+✅ Secure authentication
+
+✅ Responsive dashboards
+
+The goal is to replace traditional paper-based leave systems with a secure digital workflow.
+
+---
+
+# ✨ Features
+
+## 👨‍🎓 Student Module
+
+* Apply for leave requests
+* Upload supporting documents
+* Track application status
+* View leave history
+* Responsive dashboard
+
+## 👩‍🏫 Faculty Module
+
+* View pending requests
+* Approve / Reject applications
+* Add reviewer remarks
+* Track review history
+
+## 🛠 Admin Module
+
+* View all requests
+* User management
+* Analytics dashboard
+* System monitoring
+
+## 🔐 Security
+
+* Role Based Access Control
+* Protected Routes
+* Row Level Security (RLS)
+* Secure authentication
+
+## 🎨 UI / UX
+
+* Dark / Light mode
+* Mobile responsive
+* Modern dashboard
+* Interactive tables
+* Toast notifications
 
 ---
 
@@ -31,70 +116,37 @@ https://campu-sync.vercel.app/
 
 ## Landing Page
 
-![Landing Page](./screenshots/landing.png)
+![Landing](./screenshots/landing.png)
+
+---
 
 ## Student Dashboard
 
 ![Student Dashboard](./screenshots/student-dashboard.png)
 
+---
+
 ## Leave Application
 
-![Leave Application](./screenshots/leave-application.png)
-
-## Faculty Review Panel
-
-![Faculty Dashboard](./screenshots/faculty-review.png)
-
-## Admin Dashboard
-
-![Admin Dashboard](./screenshots/admin-dashboard.png)
+![Leave Application](./screenshots/apply-leave.png)
 
 ---
 
-# ✨ Features
+## Faculty Dashboard
 
-## Authentication & Security
+![Faculty](./screenshots/faculty-dashboard.png)
 
-* Secure authentication using Supabase Auth
-* Role-based access control
-* Protected routes
-* Row Level Security (RLS)
+---
 
-## Student Features
+## Admin Dashboard
 
-* Apply for leave requests
-* Upload attachments/documents
-* Track leave status
-* View leave history
-* Responsive dashboard
-
-## Faculty Features
-
-* Review pending requests
-* Approve / Reject leaves
-* Add reviewer remarks
-* View leave history
-
-## Admin Features
-
-* View all leave requests
-* Analytics dashboard
-* User management
-* Full system visibility
-
-## UI / UX
-
-* Dark / Light Mode
-* Mobile Responsive
-* Modern dashboard interface
-* Interactive tables
-* Toast notifications
+![Admin](./screenshots/admin-dashboard.png)
 
 ---
 
 # 🛠 Tech Stack
 
-| Category       | Technology            |
+| Layer          | Technology            |
 | -------------- | --------------------- |
 | Frontend       | Next.js + TypeScript  |
 | Styling        | Tailwind CSS          |
@@ -104,29 +156,61 @@ https://campu-sync.vercel.app/
 | Storage        | Supabase Storage      |
 | Forms          | React Hook Form + Zod |
 | Tables         | TanStack Table        |
-| Icons          | Lucide                |
+| Deployment     | Vercel                |
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
 ```text
-Users
- ↓
-Next.js Frontend
- ↓
-Supabase Auth
- ↓
-PostgreSQL Database
- ↓
-Storage + RLS Policies
+Students / Faculty / Admin
+            ↓
+       Next.js Frontend
+            ↓
+       Supabase Auth
+            ↓
+      PostgreSQL Database
+            ↓
+    Storage + RLS Policies
 ```
 
 ---
 
-# 🚀 Quick Start
+# 🗃 Database Schema
 
-## Clone Repository
+## Profiles Table
+
+```text
+id
+email
+full_name
+role
+department
+avatar_url
+created_at
+updated_at
+```
+
+## Leaves Table
+
+```text
+student_id
+leave_type
+reason
+start_date
+end_date
+status
+reviewed_by
+reviewer_remark
+reviewed_at
+attachment_url
+```
+
+---
+
+# ⚙ Installation
+
+Clone Repository:
 
 ```bash
 git clone https://github.com/mark392a-ux/CampuSync.git
@@ -134,13 +218,15 @@ git clone https://github.com/mark392a-ux/CampuSync.git
 cd CampuSync
 ```
 
-## Install Dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Environment Variables
+---
+
+# 🔑 Environment Variables
 
 Create:
 
@@ -160,7 +246,9 @@ SUPABASE_SERVICE_ROLE_KEY=
 NEXT_PUBLIC_APP_URL=
 ```
 
-## Run Locally
+---
+
+# ▶ Running Locally
 
 ```bash
 npm run dev
@@ -174,31 +262,22 @@ http://localhost:3000
 
 ---
 
-# 🗃 Database Structure
+# 🚀 Deployment
 
-## Profiles Table
+CampuSync is deployed using:
 
-```text
-id
-email
-full_name
-role
-department
-avatar_url
-```
+### Frontend
 
-## Leaves Table
+Vercel
 
-```text
-student_id
-leave_type
-start_date
-end_date
-reason
-attachment_url
-status
-reviewed_by
-reviewer_remark
+### Backend
+
+Supabase
+
+Build:
+
+```bash
+npm run build
 ```
 
 ---
@@ -206,44 +285,31 @@ reviewer_remark
 # 📁 Project Structure
 
 ```text
-app/
-components/
-lib/
-types/
-supabase/
-```
+campusync/
 
----
-
-# 🚀 Deployment
-
-## Vercel
-
-```bash
-npm run build
-```
-
-Deploy using:
-
-```text
-Vercel Dashboard
-↓
-Import Repository
-↓
-Add Environment Variables
-↓
-Deploy
+├── app/
+├── components/
+├── lib/
+├── types/
+├── supabase/
+├── public/
+├── screenshots/
+└── README.md
 ```
 
 ---
 
 # 🧪 Test Accounts
 
-Signup normally and select role:
+Signup normally.
+
+Choose:
 
 ```text
 Student
+
 Faculty
+
 Admin
 ```
 
@@ -259,7 +325,9 @@ WHERE email='admin@example.com';
 
 # 🤝 Contributing
 
-Pull requests are welcome.
+Contributions are welcome.
+
+Feel free to fork the repository and create pull requests.
 
 ---
 
