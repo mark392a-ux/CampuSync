@@ -1,114 +1,276 @@
-# 🎓 CampuSync — Campus Leave Management System
+# 🎓 CampuSync — Smart Campus Leave Management System
 
-A modern, production-ready campus leave management system built with Next.js 14, Supabase, TypeScript, and Tailwind CSS.
+<p align="center">
 
-## ✨ Features
+Modern campus leave management platform built using **Next.js, Supabase, TypeScript, and Tailwind CSS**
 
-- 🔐 Role-based auth — Student, Faculty, Admin via Supabase Auth
-- 📋 Leave applications with file attachments (Supabase Storage)
-- ✅ Approve/reject workflow with reviewer remarks
-- 📊 Analytics dashboard with charts and breakdowns
-- 🌙 Dark/light mode toggle
-- 📱 Fully responsive mobile-first design
+</p>
 
-## 🛠 Tech Stack
+<p align="center">
 
-Next.js 14 · TypeScript · Tailwind CSS v3 · Radix UI · Supabase · React Hook Form · Zod · TanStack Table · Sonner · date-fns · Lucide Icons
+![NextJS](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+![Supabase](https://img.shields.io/badge/Supabase-green)
+![License](https://img.shields.io/badge/license-MIT-purple)
+
+</p>
 
 ---
 
-## 🚀 Quick Start
+# 🌐 Live Demo
 
-### 1. Install dependencies
+**Deployed App**
+
+```text
+https://YOUR-VERCEL-URL.vercel.app
+```
+
+---
+
+# 📸 Screenshots
+
+## Landing Page
+
+![Landing Page](./screenshots/landing.png)
+
+## Student Dashboard
+
+![Student Dashboard](./screenshots/student-dashboard.png)
+
+## Leave Application
+
+![Leave Application](./screenshots/leave-application.png)
+
+## Faculty Review Panel
+
+![Faculty Dashboard](./screenshots/faculty-review.png)
+
+## Admin Dashboard
+
+![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+---
+
+# ✨ Features
+
+## Authentication & Security
+
+* Secure authentication using Supabase Auth
+* Role-based access control
+* Protected routes
+* Row Level Security (RLS)
+
+## Student Features
+
+* Apply for leave requests
+* Upload attachments/documents
+* Track leave status
+* View leave history
+* Responsive dashboard
+
+## Faculty Features
+
+* Review pending requests
+* Approve / Reject leaves
+* Add reviewer remarks
+* View leave history
+
+## Admin Features
+
+* View all leave requests
+* Analytics dashboard
+* User management
+* Full system visibility
+
+## UI / UX
+
+* Dark / Light Mode
+* Mobile Responsive
+* Modern dashboard interface
+* Interactive tables
+* Toast notifications
+
+---
+
+# 🛠 Tech Stack
+
+| Category       | Technology            |
+| -------------- | --------------------- |
+| Frontend       | Next.js + TypeScript  |
+| Styling        | Tailwind CSS          |
+| Backend        | Supabase              |
+| Database       | PostgreSQL            |
+| Authentication | Supabase Auth         |
+| Storage        | Supabase Storage      |
+| Forms          | React Hook Form + Zod |
+| Tables         | TanStack Table        |
+| Icons          | Lucide                |
+
+---
+
+# 🏗 Architecture
+
+```text
+Users
+ ↓
+Next.js Frontend
+ ↓
+Supabase Auth
+ ↓
+PostgreSQL Database
+ ↓
+Storage + RLS Policies
+```
+
+---
+
+# 🚀 Quick Start
+
+## Clone Repository
+
+```bash
+git clone https://github.com/mark392a-ux/CampuSync.git
+
+cd CampuSync
+```
+
+## Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Set up Supabase
+## Environment Variables
 
-1. Go to https://supabase.com → Create new project
-2. Open **SQL Editor** → paste contents of `supabase/migrations/001_initial_schema.sql` → Run
-3. Go to **Project Settings → API** and copy your keys
+Create:
 
-### 3. Configure environment
-
-```bash
-cp .env.example .env.local
+```text
+.env.local
 ```
 
-Fill in `.env.local`:
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+Add:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+
+SUPABASE_SERVICE_ROLE_KEY=
+
+NEXT_PUBLIC_APP_URL=
 ```
 
-### 4. Run dev server
+## Run Locally
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000
+Open:
 
----
-
-## 👤 Test Accounts
-
-Sign up at `/signup` — you can select any role (Student/Faculty/Admin).
-
-For production, restrict Admin/Faculty assignment to the database only:
-```sql
-UPDATE profiles SET role = 'admin' WHERE email = 'admin@example.com';
-UPDATE profiles SET role = 'faculty' WHERE email = 'faculty@example.com';
+```text
+http://localhost:3000
 ```
 
 ---
 
-## 📁 Project Structure
+# 🗃 Database Structure
 
+## Profiles Table
+
+```text
+id
+email
+full_name
+role
+department
+avatar_url
 ```
-campusync/
-├── app/
-│   ├── (auth)/login|signup     # Auth pages
-│   ├── (dashboard)/
-│   │   ├── student/            # Student: dashboard, apply, applications
-│   │   ├── faculty/            # Faculty: dashboard, requests, history
-│   │   └── admin/              # Admin: dashboard, requests, analytics, users
-│   └── auth/callback/          # Supabase OAuth callback
-├── components/
-│   ├── ui/                     # Button, Card, Input, Dialog, etc.
-│   ├── dashboard/              # Sidebar, StatsCard, StatusBadge
-│   ├── forms/                  # LeaveApplicationForm, ReviewLeaveDialog
-│   └── tables/                 # LeavesTable (TanStack)
-├── lib/
-│   ├── supabase/client.ts      # Browser client
-│   ├── supabase/server.ts      # Server client
-│   ├── utils.ts                # Helpers
-│   └── validations.ts          # Zod schemas
-├── types/index.ts
-├── supabase/migrations/001_initial_schema.sql
-└── middleware.ts               # Route protection
+
+## Leaves Table
+
+```text
+student_id
+leave_type
+start_date
+end_date
+reason
+attachment_url
+status
+reviewed_by
+reviewer_remark
 ```
 
 ---
 
-## 🗃️ Database Schema
+# 📁 Project Structure
 
-**profiles**: id (FK auth.users), email, full_name, role (student|faculty|admin), department, avatar_url
-
-**leaves**: id, student_id (FK), leave_type (sick|personal|medical|other), start_date, end_date, reason, attachment_url, status (pending|approved|rejected), reviewed_by, reviewer_remark, reviewed_at
-
-RLS policies ensure students see only their own data; faculty/admin see all.
+```text
+app/
+components/
+lib/
+types/
+supabase/
+```
 
 ---
 
-## 🚀 Deploy to Vercel
+# 🚀 Deployment
+
+## Vercel
 
 ```bash
-vercel
-# Add env vars in Vercel dashboard
+npm run build
 ```
 
-Built with ❤️ for modern campuses. MIT License.
+Deploy using:
+
+```text
+Vercel Dashboard
+↓
+Import Repository
+↓
+Add Environment Variables
+↓
+Deploy
+```
+
+---
+
+# 🧪 Test Accounts
+
+Signup normally and select role:
+
+```text
+Student
+Faculty
+Admin
+```
+
+For production:
+
+```sql
+UPDATE profiles
+SET role='admin'
+WHERE email='admin@example.com';
+```
+
+---
+
+# 🤝 Contributing
+
+Pull requests are welcome.
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+<p align="center">
+
+Built with ❤️ using Next.js + Supabase
+
+</p>
