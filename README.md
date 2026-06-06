@@ -22,7 +22,7 @@ Modern campus leave management platform built using **Next.js, Supabase, TypeScr
 **Deployed App**
 
 ```text
-https://YOUR-VERCEL-URL.vercel.app
+https://campu-sync.vercel.app/
 ```
 
 ---
